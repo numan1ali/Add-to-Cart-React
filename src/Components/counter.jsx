@@ -37,8 +37,9 @@ class Counter extends Component {
   }
   formatCount() {
     //   const { count} = this.state;
-    //   return count === 0? "Zero" : count;
     
+    //   return count === 0? "Zero" : count;
+
   }
 }
 
