@@ -14,14 +14,6 @@ class Counter extends Component {
   }
 
   render() {
-    // Using a let variable instead of const because we cannot change the state of const variable
-    // but we can change the field of const object e.g 
-    // const obj={ name:'Ali'};
-    // obj.name="Numan";
-
-    // Rendering class properties dynamically 
-    let classes = "badge m-2 badge-";
-    classes += (this.state.count===0) ? "warning" : "primary";
     
     return (
       <React.Fragment>
@@ -30,16 +22,26 @@ class Counter extends Component {
         {/* for inline styling style={{ fontSize: 20}} */}
         {/*<span className="badge badge-primary m-2">{this.state.count } </span> */}
         
-        <span className={classes}>{this.state.count } </span>
+        <span className={this.getBadgeClasses()}>{this.formatCount() } </span>
         <button className="btn btn-secondary btn-sm">Increment</button>
       </React.Fragment>
     );
   }
-  formatCount() {
-    //   const { count} = this.state;
+    getBadgeClasses() {
+        // Using a let variable instead of const because we cannot change the state of const variable
+        // but we can change the field of const object e.g 
+        // const obj={ name:'Ali'};
+        // obj.name="Numan";
     
-    //   return count === 0? "Zero" : count;
+        // Rendering class properties dynamically 
+        let classes = "badge m-2 badge-";
+        classes += (this.state.count === 0) ? "warning" : "primary";
+        return classes;
+    }
 
+  formatCount() {
+      const { count} = this.state;
+      return count === 0? "Zero" : count;
   }
 }
 
